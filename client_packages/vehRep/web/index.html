@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: transparent;				
+        }
+
+
+        #app{
+            display: flex;
+            flex-flow: row wrap;
+            height: 90vh;
+            width: 100%;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        a{
+            text-decoration: none;
+        }
+        .menu:hover{
+            background: #000;
+            transition: all .3s;
+        }
+        .menu1{
+            width: 300px;
+            height: 100px;
+            background: #000000c7;
+            color: #fff;
+            margin: 10px;
+            text-align: center;
+            line-height: 100px;
+            display: block;
+            font-size: 20px;
+            font-weight: 900;
+            transition: all .3s;
+			border-radius: 43px;	
+			background-image: url(../img/yesFix.png);
+			background-size: cover;
+			background-position: center center;			
+        }
+		 .menu2{
+            width: 300px;
+            height: 100px;
+            background: #000000c7;
+            color: #fff;
+            margin: 10px;
+            text-align: center;
+            line-height: 100px;
+            display: block;
+            font-size: 20px;
+            font-weight: 900;
+            transition: all .3s;
+			border-radius: 43px;	
+			background-image: url(../img/noFix.png);
+			background-size: cover;
+			background-position: center center;			
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <a href="#" @click="repair"  class="menu1">
+        Отремонтировать за <span style="color: red"><b>500$</b></span>
+    </a>
+    <a href="#" @click="cancel" class="menu2">
+        Отмена
+    </a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        methods: {
+            repair(){
+                mp.trigger('CLIENT:VEH:REPAIR');
+            },
+            cancel(){
+                this.work = false;
+                mp.trigger('CLIENT:VEH:REPAIR:CANCEL');
+            },
+            test(){
+                alert(this.work);
+            }
+        }
+    })
+</script>
+</body>
+</html>
